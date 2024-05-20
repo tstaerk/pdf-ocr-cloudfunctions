@@ -34,3 +34,7 @@ def hello_gcs(cloud_event):
         page_content=page.extract_text()
         print(page_content)
     print("still here")
+    blob = bucket.blob(name+".txt")
+    with blob.open("w") as f:
+        f.write(page_content)
+        f.close()
