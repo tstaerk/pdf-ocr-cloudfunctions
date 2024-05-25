@@ -1,5 +1,5 @@
 # pdf-ocr-cloudfunctions
-How to OCR a PDF using CloudFunctions and PyPDF
+This will provide you with a Cloud Storage bucket into which you can upload PDFs. They will automatically be converted to txt files and stored under the same name, with .txt appended.
 
 To put this to use:
 
