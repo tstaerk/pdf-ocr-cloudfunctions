@@ -16,25 +16,19 @@ def hello_gcs(cloud_event):
     timeCreated = data["timeCreated"]
     updated = data["updated"]
 
-    print(f"Event ID: {event_id}")
-    print(f"Event type: {event_type}")
-    print(f"Bucket: {bucket}")
-    print(f"File: {name}")
-    print(f"Metageneration: {metageneration}")
-    print(f"Created: {timeCreated}")
-    print(f"Updated: {updated}")
+    print("in hello_gcs")
 
 
     storage_client = storage.Client()
     bucket=storage_client.bucket(bucket)
     blob = bucket.blob(name)
-    with blob.open("rb") as f:
-        read_pdf = PyPDF2.PdfReader(f)
-        page=read_pdf.pages[0]
-        page_content=page.extract_text()
-        print(page_content)
-    print("still here")
+    inputfile=blob.open("rb")
+    read_pdf = PyPDF2.PdfReader(inputfile)
+    page=read_pdf.pages[0]
+    page_content=page.extract_text()
+    print(page_content)
     blob = bucket.blob(name+".txt")
-    with blob.open("w") as f:
-        f.write(page_content)
-        f.close()
+    outputfile=blob.open("w")
+    outputfile.write(page_content)
+    outputfile.close()
+    inputfile.close()
