@@ -23,12 +23,15 @@ def hello_gcs(cloud_event):
     bucket=storage_client.bucket(bucket)
     blob = bucket.blob(name)
     inputfile=blob.open("rb")
-    read_pdf = PyPDF2.PdfReader(inputfile)
-    page=read_pdf.pages[0]
-    page_content=page.extract_text()
-    print(page_content)
     blob = bucket.blob(name+".txt")
     outputfile=blob.open("w")
-    outputfile.write(page_content)
+    read_pdf = PyPDF2.PdfReader(inputfile)
+    print("pagecount:"+str(len(read_pdf.pages)))
+    for i in range(len(read_pdf.pages)):
+        print(i)
+        page=read_pdf.pages[i]
+        page_content=page.extract_text()
+        print(page_content)
+        outputfile.write(page_content)
     outputfile.close()
     inputfile.close()
