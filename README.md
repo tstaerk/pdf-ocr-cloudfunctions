@@ -7,7 +7,7 @@ To put this to use:
 2. Select project
 3. Go to compute engine and activate the API
 4. Cloud storage -> create
-5. Create -> enforce public access prevention
+5. Enter bucket name -> Create -> enforce public access prevention
 6. Cloud functions -> create function
 7. give it a name
 8. trigger type: Cloud Storage
