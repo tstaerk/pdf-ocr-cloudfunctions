@@ -19,3 +19,5 @@ To put this to use:
 14. select python 3.12
 15. insert main.py's and requirements.txt's code
 16. click deploy
+17. make the default compute service account Cloud Run Invoker (IAM will show you the default compute service account, edit this principal and add the role Cloud Run Invoker)
+18. Now you can test this by uploading a PDF to the bucket you created.
